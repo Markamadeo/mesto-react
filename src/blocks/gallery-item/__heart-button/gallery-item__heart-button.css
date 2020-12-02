@@ -1,0 +1,20 @@
+.gallery-item__heart-button {
+  background-image: url("../../../images/gallery__item-button-heart.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  min-width: 20.76px;
+  min-height: 18.13px;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.4s;
+
+}
+
+.gallery-item__heart-button:hover {
+  opacity: 0.6;
+}
+
+.gallery-item__heart-button:focus {
+  outline: none;
+}

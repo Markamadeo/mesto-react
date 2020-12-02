@@ -1,0 +1,6 @@
+.form__foto-viewer-img {
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: contain;
+  overflow: hidden;
+}

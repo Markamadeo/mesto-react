@@ -1,0 +1,22 @@
+.page {
+  max-width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  align-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  justify-content: center;
+  font-family: 'Inter', 'Arial', sans-serif;
+  background-color: #000000;
+  padding-bottom: 60px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media screen and (max-width: 425px) {
+  .page {
+    padding-bottom: 36px;
+  }
+}

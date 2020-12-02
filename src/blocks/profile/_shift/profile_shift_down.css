@@ -1,0 +1,9 @@
+.profile_shift_down {
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 425px) {
+  .profile_shift_down {
+    margin-bottom: 36px;
+  }
+}

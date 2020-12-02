@@ -1,0 +1,24 @@
+.form {
+  font-family: 'Inter', 'Arial', sans-serif;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.form::after {
+  content: "";
+  background-color: #000000;
+  opacity: 0.5;
+  z-index: 1;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}

@@ -1,0 +1,16 @@
+.form__container_type_submit-form {
+  width: 100%;
+  max-width: 430px;
+  min-width: 250px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 34px 36px 36px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 522px) {
+  .form__container_type_submit-form {
+    max-width: 280px;
+  }
+}

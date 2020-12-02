@@ -1,0 +1,10 @@
+.gallery-item__content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 79px;
+  padding: 0 15px 0 21px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

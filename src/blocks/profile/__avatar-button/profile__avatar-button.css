@@ -1,0 +1,25 @@
+.profile__avatar-button {
+display: none;
+grid-row: 1/2;
+grid-column: 1/2;
+margin: auto;
+width: 26px;
+height: 26px;
+cursor: pointer;
+background-color: transparent;
+background-image: url('../../../images/profile-avatar-pen.svg');
+background-repeat: no-repeat;
+background-position: 50%;
+transition: opacity .4s;
+opacity: 1;
+border: none;
+z-index: 10;
+}
+
+.profile__avatar-button:hover {
+  opacity: 0.6;
+}
+
+.profile__avatar-button:focus {
+  outline: none;
+}

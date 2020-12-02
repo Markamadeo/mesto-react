@@ -1,0 +1,25 @@
+.profile__avatar-container {
+  display: grid;
+  align-items: center;
+  margin-right: 30px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  z-index: 1;
+  transition: opacity 0.4s;
+}
+
+.profile__avatar-container:hover {
+  opacity: 0.8;
+}
+
+.profile__avatar-container:hover .profile__avatar-button {
+  display: block;
+}
+
+@media screen and (max-width: 425px) {
+  .profile__avatar-container {
+    padding-right: 0;
+    margin-bottom: 14px;
+  }
+}

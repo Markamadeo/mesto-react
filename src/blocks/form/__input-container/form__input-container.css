@@ -1,0 +1,10 @@
+.form__input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 13px;
+  min-height: 49px;
+}
+
+.form__input-container:last-of-type {
+  margin-bottom: 31px;
+}

@@ -1,0 +1,29 @@
+.form__close-button {
+  width: 58px;
+  height: 58px;
+  position: absolute;
+  background-color: transparent;
+  border: 0;
+  background-image: url("../../../images/edit-form_close-icon.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: rotate(90deg);
+  transition: opacity 0.4s;
+  cursor: pointer;
+  top: -46px;
+  right: -43px;
+}
+
+.form__close-button:hover {
+  opacity: 0.6;
+}
+
+.form__close-button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 425px) {
+  .form__close-button {
+    right: -27px;
+  }
+}
