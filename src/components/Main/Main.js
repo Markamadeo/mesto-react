@@ -57,6 +57,7 @@ function Main(props) {
             <Card
               key={index}
               card={card}
+              onClickCard={props.onClickCard}
             />
           );
         })}

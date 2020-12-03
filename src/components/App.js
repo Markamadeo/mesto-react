@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
+import ImagePopup from "./ImagePopup/ImagePopup";
 import Main from "./Main/Main";
 import PopupWithForm from "./PopupWithForm/PopupWithForm";
 
@@ -8,8 +9,19 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [closePopup, setClosePopup] = useState(true);
+  const [closePopup, setClosePopup] = useState();
+  const [selectedCard, setSelectedCard] = useState({
+    clicked: false,
+    card: { link: "#", name: "" },
+  });
 
+  function handleCardClick(card) {
+    setClosePopup(true);
+    setSelectedCard({
+      clicked: true,
+      card,
+    });
+  }
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
     setClosePopup(true);
@@ -27,6 +39,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setSelectedCard({ clicked: false, card: { link: "#", name: "" } });
   }
   return (
     <div className="App">
@@ -36,6 +49,7 @@ function App() {
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
+          onClickCard={handleCardClick}
         />
         <Footer />
       </main>
@@ -124,32 +138,11 @@ function App() {
         </div>
       </PopupWithForm>
 
-      <section className="form form_type_foto-viewer">
-        <figure className="form__container form__container_type_foto-viewer">
-          <button
-            type="button"
-            className="form__close-button form__close-button_type_foto-viewer-close-button"
-          ></button>
-          <img className="form__foto-viewer-img" />
-          <figcaption className="form__foto-viewer-description"></figcaption>
-        </figure>
-      </section>
-      <template id="gallery-item">
-        <li className="gallery-item">
-          <button type="button" className="gallery-item__trash-button"></button>
-          <img className="gallery-item__image" />
-          <div className="gallery-item__content">
-            <h2 className="gallery-item__title"></h2>
-            <div className="gallery-item__like-container">
-              <button
-                type="button"
-                className="gallery-item__heart-button"
-              ></button>
-              <p className="gallery-item__like-counter"></p>
-            </div>
-          </div>
-        </li>
-      </template>
+      <ImagePopup
+        onClosePopup={closeAllPopups}
+        onClose={closePopup}
+        card={selectedCard}
+      ></ImagePopup>
     </div>
   );
 }
