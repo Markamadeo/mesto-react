@@ -1,156 +1,128 @@
+import { useState } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
+import PopupWithForm from "./PopupWithForm/PopupWithForm";
 
 function App() {
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [closePopup, setClosePopup] = useState(true);
+
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+    setClosePopup(true);
+  }
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+    setClosePopup(true);
+  }
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
+    setClosePopup(true);
+  }
+  function closeAllPopups() {
+    setClosePopup(!closePopup);
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
   return (
     <div className="App">
       <main className="page">
         <Header />
-        <Main />
+        <Main
+          onEditProfile={handleEditProfileClick}
+          onAddPlace={handleAddPlaceClick}
+          onEditAvatar={handleEditAvatarClick}
+        />
         <Footer />
       </main>
-      <section className="form form_type_change-avatar">
-        <form
-          className="form__container form__container_type_submit-form form__container_type_change-avatar"
-          name="avatarForm"
-          noValidate
-        >
-          <button
-            type="button"
-            className="form__close-button form__close-button_type_change-avatar"
-          ></button>
-          <h2 className="form__title form__title_type_change-avatar">
-            Обновить Аватар
-          </h2>
-          <div className="form__input-container">
-            <input
-              name="avatar"
-              type="url"
-              className="form__textinput form__textinput_type_change-avatar"
-              placeholder="Ссылка на Аватар"
-              required
-            />
-            <span className="form__error" id="avatar-error"></span>
-          </div>
-          <button
-            name="avatarSubmit"
-            type="submit"
-            className="form__submit-button form__submit-button_type_change-avatar"
-          >
-            Сохранить
-          </button>
-        </form>
-      </section>
 
-      <section className="form form_type_delete-card">
-        <form
-          className="form__container form__container_type_submit-form form__container_type_delete"
-          name="deleteForm"
-          noValidate
-        >
-          <button
-            type="button"
-            className="form__close-button form__close-button_type_delete"
-          ></button>
-          <h2 className="form__title form__title_type_delete">Вы уверены?</h2>
-          <button
-            name="deleteSubmit"
-            type="submit"
-            className="form__submit-button form__submit-button_type_delete-button"
-          >
-            Да
-          </button>
-        </form>
-      </section>
+      <PopupWithForm
+        name="change-avatar"
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closePopup}
+        closePopup={closeAllPopups}
+        title="Обновить Аватар"
+        buttonText="Сохранить"
+      >
+        <div className="form__input-container">
+          <input
+            name="avatar"
+            type="url"
+            className="form__textinput form__textinput_type_change-avatar"
+            placeholder="Ссылка на Аватар"
+            required
+          />
+          <span className="form__error" id="avatar-error"></span>
+        </div>
+      </PopupWithForm>
 
-      <section className="form form_type_edit">
-        <form
-          className="form__container form__container_type_submit-form form__container_type_edit"
-          name="editForm"
-          noValidate
-        >
-          <button
-            type="button"
-            className="form__close-button form__close-button_type_edit"
-          ></button>
-          <h2 className="form__title form__title_type_edit">
-            Редактировать профиль
-          </h2>
-          <div className="form__input-container">
-            <input
-              name="fullName"
-              type="text"
-              className="form__textinput form__textinput_type_edit-full-name"
-              required
-              minLength="2"
-              maxLength="40"
-            />
-            <span className="form__error" id="fullName-error"></span>
-          </div>
-          <div className="form__input-container">
-            <input
-              name="description"
-              type="text"
-              className="form__textinput form__textinput_type_edit-description"
-              required
-              minLength="2"
-              maxLength="200"
-            />
-            <span className="form__error" id="description-error"></span>
-          </div>
-          <button
-            name="editSubmit"
-            type="submit"
-            className="form__submit-button form__submit-button_type_edit-save-button"
-          >
-            Сохранить
-          </button>
-        </form>
-      </section>
+      <PopupWithForm
+        name="edit"
+        isOpen={isEditProfilePopupOpen}
+        onClose={closePopup}
+        closePopup={closeAllPopups}
+        title="Редактировать профиль"
+        buttonText="Сохранить"
+      >
+        <div className="form__input-container">
+          <input
+            name="fullName"
+            type="text"
+            className="form__textinput form__textinput_type_edit-full-name"
+            required
+            minLength="2"
+            maxLength="40"
+          />
+          <span className="form__error" id="fullName-error"></span>
+        </div>
+        <div className="form__input-container">
+          <input
+            name="description"
+            type="text"
+            className="form__textinput form__textinput_type_edit-description"
+            required
+            minLength="2"
+            maxLength="200"
+          />
+          <span className="form__error" id="description-error"></span>
+        </div>
+      </PopupWithForm>
 
-      <section className="form form_type_adding">
-        <form
-          className="form__container form__container_type_submit-form form__container_type_adding"
-          name="addingForm"
-          noValidate
-        >
-          <button
-            type="button"
-            className="form__close-button form__close-button_type_adding"
-          ></button>
-          <h2 className="form__title form__title_type_adding">Новое место</h2>
-          <div className="form__input-container">
-            <input
-              name="name"
-              type="text"
-              className="form__textinput form__textinput_type_adding-name"
-              placeholder="Название"
-              required
-              minLength="2"
-              maxLength="30"
-            />
-            <span className="form__error" id="name-error"></span>
-          </div>
-          <div className="form__input-container">
-            <input
-              name="link-address"
-              type="url"
-              className="form__textinput form__textinput_type_adding-link-address"
-              placeholder="Ссылка на картинку"
-              required
-            />
-            <span className="form__error" id="link-address-error"></span>
-          </div>
-          <button
-            name="addingSubmit"
-            type="submit"
-            className="form__submit-button form__submit-button_type_adding-add-button"
-          >
-            Добавить
-          </button>
-        </form>
-      </section>
+      <PopupWithForm
+        name="adding"
+        isOpen={isAddPlacePopupOpen}
+        onClose={closePopup}
+        closePopup={closeAllPopups}
+        title="Новое место"
+        buttonText="Добавить"
+      >
+        <div className="form__input-container">
+          <input
+            name="name"
+            type="text"
+            className="form__textinput form__textinput_type_adding-name"
+            placeholder="Название"
+            required
+            minLength="2"
+            maxLength="30"
+          />
+          <span className="form__error" id="name-error"></span>
+        </div>
+        <div className="form__input-container">
+          <input
+            name="link-address"
+            type="url"
+            className="form__textinput form__textinput_type_adding-link-address"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span className="form__error" id="link-address-error"></span>
+        </div>
+      </PopupWithForm>
 
       <section className="form form_type_foto-viewer">
         <figure className="form__container form__container_type_foto-viewer">
