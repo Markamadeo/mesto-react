@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Проект 4: Mesto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Обзор
+* Интро
+* Технологии
+* META
 
-## Available Scripts
+**Интро**
 
-In the project directory, you can run:
+Проект Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.
+[Ссылка на GH Pages](https://markamadeo.github.io/mesto/)
 
-### `npm start`
+**Технологии**
+> Сайт создан на основе современных технологий, HTML & CSS, Java Script, React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![JavaScript Version][javascript-image]][javascript-url]
+[![HTML Version][html-image]][html-url]
+[![CSS Version][css-image]][css-url]
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+При создании этой страницы, были использованы такие методалогии как:
+BEM - БЭМ (Блок Элемент Модификатор)
 
-### `npm run build`
+Структура файлов организованна по правилам Nested БЭМ.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Так же использованы возможности React, JavaSctipt, HTML и CSS:
+* React
+* JavaSctipt
+* Flex
+* Grid
+* Адаптивная вёрстка
+* Позиционирование
+* Семантическая вёрстка
+* Анимация и многое другое.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](./src/images/photo_readme.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**META**
 
-### `npm run eject`
+Автор: Кулаков Артём – [@MyVK](https://vk.com/diamondhand) – kulakov22@yandex.ru
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[https://github.com/Markamadeo](https://github.com/Markamadeo/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+<!-- Markdown link & img href -->
+[javascript-image]: https://img.shields.io/badge/JavaScript-6-yellow
+[javascript-url]: https://ru.wikipedia.org/wiki/ECMAScript
+[html-image]: https://img.shields.io/badge/HTML-5.0-green
+[html-url]: https://html.spec.whatwg.org/
+[css-image]: https://img.shields.io/badge/CSS-3-orange
+[css-url]: https://www.w3.org/Style/CSS/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
