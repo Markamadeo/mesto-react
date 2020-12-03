@@ -8,7 +8,7 @@
 **Интро**
 
 Проект Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.
-[Ссылка на GH Pages](https://markamadeo.github.io/mesto/)
+[Ссылка на GH Pages](https://markamadeo.github.io/mesto-react/)
 
 **Технологии**
 > Сайт создан на основе современных технологий, HTML & CSS, Java Script, React

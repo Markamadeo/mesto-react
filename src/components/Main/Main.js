@@ -54,11 +54,7 @@ function Main(props) {
       <ul className="gallery gallery_shift_down">
         {cards.map((card, index) => {
           return (
-            <Card
-              key={index}
-              card={card}
-              onClickCard={props.onClickCard}
-            />
+            <Card key={index} card={card} onClickCard={props.onClickCard} />
           );
         })}
       </ul>
