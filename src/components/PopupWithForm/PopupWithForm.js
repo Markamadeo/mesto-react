@@ -1,11 +1,9 @@
 function PopupWithForm(props) {
   return (
     <section
-      className={
-        props.isOpen && props.onClose
-          ? `form form_type_${props.name} form_status_active`
-          : `form form_type_${props.name}`
-      }
+      className={`form form_type_${props.name} ${
+        props.isOpen && "form_status_active"
+      }`}
     >
       <form
         className="form__container form__container_type_submit-form"
@@ -13,7 +11,7 @@ function PopupWithForm(props) {
         noValidate
       >
         <button
-          onClick={props.closePopup}
+          onClick={props.onClose}
           type="button"
           className="form__close-button"
         ></button>

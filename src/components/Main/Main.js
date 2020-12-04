@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../../utils/Api";
+import api from "../../utils/api";
 import Card from "../Card/Card";
 
 function Main(props) {
@@ -14,7 +14,7 @@ function Main(props) {
       setUserDescription(data.about);
       setUserAvatar(data.avatar);
     });
-  }, [userName, userDescription, userAvatar]);
+  }, []);
 
   useEffect(() => {
     api.initialCards().then((dataCards) => {
@@ -52,9 +52,9 @@ function Main(props) {
         ></button>
       </section>
       <ul className="gallery gallery_shift_down">
-        {cards.map((card, index) => {
+        {cards.map((card) => {
           return (
-            <Card key={index} card={card} onClickCard={props.onClickCard} />
+            <Card key={card._id} card={card} onClickCard={props.onClickCard} />
           );
         })}
       </ul>

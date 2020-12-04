@@ -1,20 +1,18 @@
 function ImagePopup(props) {
   return (
     <section
-      className={
-        props.card.clicked && props.onClose
-          ? `form form_type_foto-viewer form_status_active`
-          : `form form_type_foto-viewer`
-      }
+      className={`form form_type_foto-viewer ${
+        props.isOpen && "form_status_active"
+      }`}
     >
       <figure className="form__container form__container_type_foto-viewer">
         <button
           type="button"
-          onClick={props.onClosePopup}
+          onClick={props.onClose}
           className="form__close-button form__close-button_type_foto-viewer-close-button"
         ></button>
         <img
-          src={props.card.card.link}
+          src={props.card.link}
           alt={props.card.name}
           className="form__foto-viewer-img"
         />
