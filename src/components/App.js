@@ -35,7 +35,10 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsPhotoViewer(false);
-    setSelectedCard({ clicked: false, card: { link: "#", name: "" } });
+    setSelectedCard({
+      link: "#",
+      name: "",
+    });
   }
   return (
     <div className="App">
