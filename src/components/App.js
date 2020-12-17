@@ -53,7 +53,6 @@ function App() {
 
   function handleUpdateAvatar(link) {
     api.changeAvatar(link).then((data) => {
-      console.log(data);
       setCurrentUser(data);
     });
     closeAllPopups();
