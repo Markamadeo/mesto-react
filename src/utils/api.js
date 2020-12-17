@@ -32,14 +32,11 @@ class Api {
       .catch((err) => alert(err));
   }
 
-  sendProfileInfo({ value0: name, value1: about }) {
+  sendProfileInfo(userInfo) {
     return fetch(this.baseUrl + "/users/me", {
       method: "PATCH",
       headers: this.headers,
-      body: JSON.stringify({
-        name: name,
-        about: about,
-      }),
+      body: JSON.stringify(userInfo),
     })
       .then((res) => {
         if (res.ok) {
@@ -107,8 +104,7 @@ class Api {
           }
         })
         .catch((err) => alert(err));
-    } 
-    else if (!status){
+    } else if (!status) {
       return fetch(this.baseUrl + `/cards/likes/${id}`, {
         method: "DELETE",
         headers: this.headers,
@@ -124,7 +120,6 @@ class Api {
         })
         .catch((err) => alert(err));
     }
-    
   }
 
   changeAvatar(link) {
