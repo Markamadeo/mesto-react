@@ -83,9 +83,9 @@ function App() {
   }
 
   function handleAddPlaceSubmit(data) {
-    api.sendNewCard(data).then(newCard => {
+    api.sendNewCard(data).then((newCard) => {
       setCards([newCard, ...cards]);
-    })
+    });
   }
 
   function closeAllPopups() {
