@@ -1,11 +1,19 @@
 import { useState, useEffect, useContext } from "react";
 import api from "../../utils/api";
 import Card from "../Card/Card";
-import CurrentUserContext from "../../contexts/CurrentUserContext"
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Main(props) {
   const [cards, setCards] = useState([]);
-  const currentUser = useContext(CurrentUserContext)
+  const currentUser = useContext(CurrentUserContext);
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+      setCards(newCards);
+    });
+  } 
 
   useEffect(() => {
     api.initialCards().then((dataCards) => {
@@ -17,7 +25,11 @@ function Main(props) {
     <div className="page__container">
       <section className="profile profile_shift_down">
         <div className="profile__avatar-container">
-          <img src={currentUser.avatar} alt="Аватар" className="profile__image" />
+          <img
+            src={currentUser.avatar}
+            alt="Аватар"
+            className="profile__image"
+          />
           <button
             onClick={props.onEditAvatar}
             className="profile__avatar-button"
@@ -45,7 +57,7 @@ function Main(props) {
       <ul className="gallery gallery_shift_down">
         {cards.map((card) => {
           return (
-            <Card key={card._id} card={card} onClickCard={props.onClickCard} />
+            <Card key={card._id} card={card} onClickCard={props.onClickCard} onCardLike={handleCardLike} />
           );
         })}
       </ul>
