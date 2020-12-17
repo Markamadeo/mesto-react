@@ -1,9 +1,7 @@
 import { useRef } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-// import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
-  // const currentUser = useContext(CurrentUserContext);
   const avatarLink = useRef();
 
   function handleSubmit(e) {

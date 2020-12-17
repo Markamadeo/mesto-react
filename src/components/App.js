@@ -3,11 +3,11 @@ import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import ImagePopup from "./ImagePopup/ImagePopup";
 import Main from "./Main/Main";
-import PopupWithForm from "./PopupWithForm/PopupWithForm";
 import api from "../utils/api";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import EditProfilePopup from "../components/EditProfilePopup/EditProfilePopup";
 import EditAvatarPopup from "../components/EditAvatarPopup/EditAvatarPopup";
+import AddPlacePopup from "../components/AddPlacePopup/AddPlacePopup";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -82,6 +82,12 @@ function App() {
     closeAllPopups();
   }
 
+  function handleAddPlaceSubmit(data) {
+    api.sendNewCard(data).then(newCard => {
+      setCards([newCard, ...cards]);
+    })
+  }
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -121,36 +127,11 @@ function App() {
           onClose={closeAllPopups}
         />
 
-        <PopupWithForm
-          name="adding"
+        <AddPlacePopup
+          onAddPlace={handleAddPlaceSubmit}
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-          title="Новое место"
-          buttonText="Добавить"
-        >
-          <div className="form__input-container">
-            <input
-              name="name"
-              type="text"
-              className="form__textinput form__textinput_type_adding-name"
-              placeholder="Название"
-              required
-              minLength="2"
-              maxLength="30"
-            />
-            <span className="form__error" id="name-error"></span>
-          </div>
-          <div className="form__input-container">
-            <input
-              name="link-address"
-              type="url"
-              className="form__textinput form__textinput_type_adding-link-address"
-              placeholder="Ссылка на картинку"
-              required
-            />
-            <span className="form__error" id="link-address-error"></span>
-          </div>
-        </PopupWithForm>
+        />
 
         <ImagePopup
           isOpen={isPhotoViewerOpen}
