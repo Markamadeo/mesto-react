@@ -7,6 +7,7 @@ import PopupWithForm from "./PopupWithForm/PopupWithForm";
 import api from "../utils/api";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import EditProfilePopup from "../components/EditProfilePopup/EditProfilePopup";
+import EditAvatarPopup from "../components/EditAvatarPopup/EditAvatarPopup";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -19,7 +20,7 @@ function App() {
   });
   const [currentUser, setCurrentUser] = useState({
     name: "",
-    about: ""
+    about: "",
   });
 
   useEffect(() => {
@@ -50,6 +51,14 @@ function App() {
     closeAllPopups();
   }
 
+  function handleUpdateAvatar(link) {
+    api.changeAvatar(link).then((data) => {
+      console.log(data);
+      setCurrentUser(data);
+    });
+    closeAllPopups();
+  }
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -74,28 +83,15 @@ function App() {
           <Footer />
         </main>
 
-        <PopupWithForm
-          name="change-avatar"
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          title="Обновить Аватар"
-          buttonText="Сохранить"
-        >
-          <div className="form__input-container">
-            <input
-              name="avatar"
-              type="url"
-              className="form__textinput form__textinput_type_change-avatar"
-              placeholder="Ссылка на Аватар"
-              required
-            />
-            <span className="form__error" id="avatar-error"></span>
-          </div>
-        </PopupWithForm>
-
         <EditProfilePopup
           onUpdateUser={handleUpdateUser}
           isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+        />
+
+        <EditAvatarPopup
+          onUpdateAvatar={handleUpdateAvatar}
+          isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
         />
 

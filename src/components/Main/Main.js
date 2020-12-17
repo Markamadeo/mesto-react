@@ -8,17 +8,17 @@ function Main(props) {
   const currentUser = useContext(CurrentUserContext);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
     });
   }
-  
+
   function handleCardDelete(card) {
     api.deleteCard(card._id).then((newCard) => {
-      console.log(newCard)
-      const newCards = cards.filter((c) => c._id === card._id ? newCard : c);
+      console.log(newCard);
+      const newCards = cards.filter((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
     });
   }
@@ -65,7 +65,13 @@ function Main(props) {
       <ul className="gallery gallery_shift_down">
         {cards.map((card) => {
           return (
-            <Card key={card._id} card={card} onClickCard={props.onClickCard} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
+            <Card
+              key={card._id}
+              card={card}
+              onClickCard={props.onClickCard}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+            />
           );
         })}
       </ul>
