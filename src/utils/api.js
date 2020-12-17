@@ -127,40 +127,6 @@ class Api {
     
   }
 
-  // addLikePhoto(id) {
-  //   return fetch(this.baseUrl + `/cards/likes/${id}`, {
-  //     method: "PUT",
-  //     headers: this.headers,
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       } else {
-  //         return Promise.reject(
-  //           `Ошибка: не удалось поставить like, статус ${res.status}`
-  //         );
-  //       }
-  //     })
-  //     .catch((err) => alert(err));
-  // }
-
-  // removeLikePhoto(id) {
-  //   return fetch(this.baseUrl + `/cards/likes/${id}`, {
-  //     method: "DELETE",
-  //     headers: this.headers,
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       } else {
-  //         return Promise.reject(
-  //           `Ошибка: не удалось поставить like, статус ${res.status}`
-  //         );
-  //       }
-  //     })
-  //     .catch((err) => alert(err));
-  // }
-
   changeAvatar(link) {
     return fetch(this.baseUrl + "/users/me/avatar", {
       method: "PATCH",

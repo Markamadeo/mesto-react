@@ -13,7 +13,15 @@ function Main(props) {
       const newCards = cards.map((c) => c._id === card._id ? newCard : c);
       setCards(newCards);
     });
-  } 
+  }
+  
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then((newCard) => {
+      console.log(newCard)
+      const newCards = cards.filter((c) => c._id === card._id ? newCard : c);
+      setCards(newCards);
+    });
+  }
 
   useEffect(() => {
     api.initialCards().then((dataCards) => {
@@ -57,7 +65,7 @@ function Main(props) {
       <ul className="gallery gallery_shift_down">
         {cards.map((card) => {
           return (
-            <Card key={card._id} card={card} onClickCard={props.onClickCard} onCardLike={handleCardLike} />
+            <Card key={card._id} card={card} onClickCard={props.onClickCard} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>
           );
         })}
       </ul>

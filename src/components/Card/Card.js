@@ -1,7 +1,7 @@
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {useContext} from "react";
 
-function Card({ card, onClickCard, onCardLike }) {
+function Card({ card, onClickCard, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
   const isLiked = card.likes.some(i => i._id === currentUser._id);
   const cardLikeButtonClassName = `gallery-item__heart-button ${isLiked && 'gallery-item__heart-button_type_active'}`;
@@ -12,10 +12,13 @@ function Card({ card, onClickCard, onCardLike }) {
   function handleLikeClick() {
     onCardLike(card);
   }
+  function handleDeleteCardClick() {
+    onCardDelete(card);
+  }
 
   return (
     <li className="gallery-item">
-      {isOwn && (<button type="button" className="gallery-item__trash-button"></button>)}
+      {isOwn && (<button onClick={handleDeleteCardClick} type="button" className="gallery-item__trash-button"></button>)}
       <img
         onClick={handleClick}
         src={card.link}
