@@ -10,6 +10,8 @@ import EditProfilePopup from "../components/EditProfilePopup/EditProfilePopup";
 import EditAvatarPopup from "../components/EditAvatarPopup/EditAvatarPopup";
 
 function App() {
+  const [cards, setCards] = useState([]);
+
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -24,10 +26,32 @@ function App() {
   });
 
   useEffect(() => {
+    api.initialCards().then((dataCards) => {
+      setCards(dataCards);
+    });
+  }, []);
+
+  useEffect(() => {
     api.getUserInfo().then((data) => {
       setCurrentUser(data);
     });
   }, []);
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    });
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then((newCard) => {
+      console.log(newCard);
+      const newCards = cards.filter((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    });
+  }
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -74,6 +98,9 @@ function App() {
         <main className="page">
           <Header />
           <Main
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}

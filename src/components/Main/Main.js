@@ -1,33 +1,9 @@
-import { useState, useEffect, useContext } from "react";
-import api from "../../utils/api";
+import { useContext } from "react";
 import Card from "../Card/Card";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Main(props) {
-  const [cards, setCards] = useState([]);
   const currentUser = useContext(CurrentUserContext);
-
-  function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-      setCards(newCards);
-    });
-  }
-
-  function handleCardDelete(card) {
-    api.deleteCard(card._id).then((newCard) => {
-      console.log(newCard);
-      const newCards = cards.filter((c) => (c._id === card._id ? newCard : c));
-      setCards(newCards);
-    });
-  }
-
-  useEffect(() => {
-    api.initialCards().then((dataCards) => {
-      setCards(dataCards);
-    });
-  }, []);
 
   return (
     <div className="page__container">
@@ -63,14 +39,14 @@ function Main(props) {
         ></button>
       </section>
       <ul className="gallery gallery_shift_down">
-        {cards.map((card) => {
+        {props.cards.map((card) => {
           return (
             <Card
               key={card._id}
               card={card}
               onClickCard={props.onClickCard}
-              onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
+              onCardLike={props.onCardLike}
+              onCardDelete={props.onCardDelete}
             />
           );
         })}
